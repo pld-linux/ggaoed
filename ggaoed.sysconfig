@@ -1,0 +1,4 @@
+# ggaoed startup configuration file
+
+# Try to define nice-level for running ggaoed
+SERVICE_RUN_NICE_LEVEL="+5"
