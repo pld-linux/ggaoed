@@ -2,3 +2,6 @@
 
 # Try to define nice-level for running ggaoed
 SERVICE_RUN_NICE_LEVEL="+5"
+
+# Default options
+GGAOED_OPTS="--config /etc/ggaoed.conf"
