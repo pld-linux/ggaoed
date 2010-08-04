@@ -19,7 +19,7 @@
 . /etc/sysconfig/network
 
 # Get service config
-[ -f /etc/sysconfig/ggaoed.conf ] && . /etc/sysconfig/ggaoed.conf
+[ -f /etc/sysconfig/ggaoed ] && . /etc/sysconfig/ggaoed
 
 # Check that networking is up.
 if is_yes "${NETWORKING}"; then
@@ -58,7 +58,7 @@ reload() {
 	if [ -f /var/lock/subsys/ggaoed ]; then
 		msg_reloading ggaoed
 		busy
-		ggaoectl reload
+		/usr/sbin/ggaoectl reload
 		RETVAL=$?
 		[ $RETVAL -ne 0 ] && RETVAL=7
 		[ $RETVAL -eq 0 ] && ok || fail
@@ -103,7 +103,7 @@ case "$1" in
 	;;
   status)
 	status ggaoed
-	ggaoectl stats
+	/usr/sbin/ggaoectl stats
 	exit $?
 	;;
   *)
