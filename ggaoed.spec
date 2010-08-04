@@ -3,7 +3,7 @@ Name:		ggaoed
 Version:	1.1
 Release:	0.2
 License:	GPL v2
-Group:		Base/Utilities
+Group:		Networking/Daemons
 Source0:	http://ggaoed.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	9d46d1b274e96547bb93bc5360a1db54
 Source1:	%{name}.init
