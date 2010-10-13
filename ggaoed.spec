@@ -1,7 +1,7 @@
 Summary:	ggaoed - ATA over Ethernet target implementation for Linux
 Name:		ggaoed
 Version:	1.1
-Release:	0.2
+Release:	1
 License:	GPL v2
 Group:		Networking/Daemons
 Source0:	http://ggaoed.googlecode.com/files/%{name}-%{version}.tar.gz
