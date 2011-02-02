@@ -14,6 +14,8 @@ BuildRequires:	docbook2X >= 0.8
 BuildRequires:	glib2-devel >= 2.12
 BuildRequires:	libaio-devel >= 0.3.107
 BuildRequires:	libatomic_ops >= 1.2
+BuildRequires:	libblkid-devel
+BuildRequires:	pkgconfig
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
 Requires:	uname(release) >= 2.6.31
