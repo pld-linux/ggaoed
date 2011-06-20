@@ -1,7 +1,7 @@
 Summary:	ggaoed - ATA over Ethernet target implementation for Linux
 Name:		ggaoed
 Version:	1.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Networking/Daemons
 Source0:	http://ggaoed.googlecode.com/files/%{name}-%{version}.tar.gz
@@ -9,6 +9,7 @@ Source0:	http://ggaoed.googlecode.com/files/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Patch0:		%{name}-build.patch
+Patch1:		%{name}-netlink-rx-buffer-realloc.patch
 URL:		http://code.google.com/p/ggaoed/
 BuildRequires:	docbook2X >= 0.8
 BuildRequires:	glib2-devel >= 2.12
@@ -29,6 +30,7 @@ features to provide the best performance.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure

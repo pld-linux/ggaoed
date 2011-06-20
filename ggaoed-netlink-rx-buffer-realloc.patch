@@ -1,0 +1,29 @@
+--- ggaoed-1.1/netlink.c.orig	2011-06-20 19:57:17.000000000 +0200
++++ ggaoed-1.1/netlink.c	2011-06-20 20:27:47.426951722 +0200
+@@ -174,7 +174,7 @@
+ 	int len;
+ 
+ 	addrlen = sizeof(from_addr);
+-	len = recvfrom(nl_fd, recvbuf, recvlen, MSG_TRUNC | MSG_DONTWAIT,
++	len = recvfrom(nl_fd, recvbuf, recvlen, MSG_TRUNC | MSG_DONTWAIT | MSG_PEEK,
+ 		(struct sockaddr *)&from_addr, &addrlen);
+ 	if (!len)
+ 		return;
+@@ -185,13 +185,12 @@
+ 	}
+ 	if (len > recvlen)
+ 	{
+-		/* The buffer was too small. Increase it and request a
+-		 * new enumeration */
+-		recvlen <<= 1;
++		/* The buffer was too small. Increase it and try again... */
++		recvlen = len;
+ 		recvbuf = g_realloc(recvbuf, recvlen);
+-		netmon_enumerate();
+-		return;
+ 	}
++	len = recvfrom(nl_fd, recvbuf, recvlen, MSG_TRUNC | MSG_DONTWAIT,
++		(struct sockaddr *)&from_addr, &addrlen);
+ 
+ 	for (msg = (struct nlmsghdr *)recvbuf; NLMSG_OK(msg, (unsigned)len);
+ 			msg = NLMSG_NEXT(msg, len))
